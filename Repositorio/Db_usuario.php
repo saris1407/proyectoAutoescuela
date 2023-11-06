@@ -58,12 +58,30 @@ class Db_usuario  {
 
     public static function Insert($objeto) {
         $conexion = Db::AbreConexion();
-        $query = "INSERT INTO USUARIO (nombre, contraseña, rol) VALUES (:nombre, :contraseña, :rol)";
+        $query = "INSERT INTO USUARIO (nombre, contraseña, rol) VALUES (:nombre, :contrasena, :rol)";
         $statement = $conexion->prepare($query);
-        $statement->bindParam(':nombre', $objeto->nombre, PDO::PARAM_STR);
-        $statement->bindParam(':contraseña', $objeto->contraseña, PDO::PARAM_STR);
-        $statement->bindParam(':rol', $objeto->rol, PDO::PARAM_STR);
+    
+        // Utilizamos reflexión para acceder a la propiedad privada $nombre
+        $reflection = new ReflectionClass($objeto);
+        $property = $reflection->getProperty('nombre');
+        $property->setAccessible(true);
+        $nombre = $property->getValue($objeto);
+    
+        // Almacenar el resultado de los métodos en variables
+        $contrasena = $objeto->getContraseña();
+        $rol = $objeto->getRol();
+    
+        // Vincula los valores a los marcadores de posición
+        $statement->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+        $statement->bindParam(':contrasena', $contrasena, PDO::PARAM_STR);
+        $statement->bindParam(':rol', $rol, PDO::PARAM_STR);
+    
+        // Ejecutar la consulta para insertar los datos en la base de datos
         $statement->execute();
     }
+    
+    
+    
 }
+
 ?>

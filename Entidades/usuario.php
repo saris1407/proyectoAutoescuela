@@ -51,6 +51,7 @@ class Usuario {
     public function setRol($rol) {
         $this->rol = $rol;
     }
+    
     public function toString() {
         return "id: " . $this->id . ", Nombre: " . $this->nombre . ", Rol: " . $this->rol;
     }
