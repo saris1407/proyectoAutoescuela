@@ -9,39 +9,24 @@ body {
     background-color: #614f4f;
     margin: 0;
     padding: 0;
-    background-image: url("../saved pictures/screen.png");
-}
-
-header {
-    background-color: #613e3e;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
-
-h1 {
-    font-size: 24px;
-}
-
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
+    background-image: url("../saved pictures/post-img-04.jpg");
 }
 
 .contenedor-box {
-    background-color: #fff;
+    background-color: #e7caca;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(207, 149, 149, 0.489);
+    box-shadow: 0 0 5px rgba(207, 149, 149, 0.489);
     text-align: center;
+    width: 20em;
+    
 }
+
 
 label {
     display: block;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 input {
@@ -52,61 +37,15 @@ input {
 }
 
 button {
-    background-color: #FF0000;
+    background-color: #ca4747;
     color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 1em;
 }
-
-ul {
-    background-color: rgb(234, 231, 231);
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    bottom: 0;
-    width: 90%;
-}
-
-.logo {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 100px;
-    height: 100px;
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
-    
-    body {
-        font-family: 'Open Sans', sans-serif;
-        background-color: #614f4f;
-        margin: 0;
-        padding: 0;
-        background-image: url("../saved pictures/screen.png");
-    }
-    
-    header {
-        background-color: #211c1c;
-        color: #fff;
-        text-align: center;
-        padding: 20px 0;
-    }
-    
-    h1 {
-        font-size: 24px;
-    }
-    
-    main {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 80vh;
-    }
+   
     
     .contenedor-box {
         background-color: #fff;
@@ -130,50 +69,280 @@ ul {
     }
     
     button {
-        background-color: #FF0000;
+        background-color: rgb(44, 18, 96);
         color: #fff;
         padding: 10px 20px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
     }
+
+.nav-button a {
     
-    ul {
-        background-color: rgb(234, 231, 231);
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        position: absolute;
-        bottom: 0;
-        width: 90%;
-    }
+    background-color: rgb(190, 74, 74); 
+    color: white;
+    padding: 8px 30px;
+    text-decoration: none;
+    border: 1px solid #bdb9b9;
+    border-radius: 20px; 
+    margin-right: 20px;
     
-    .logo {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        width: 100px;
-        height: 100px;
-        background-image: url('../saved\ pictures/logo.png'); 
-        background-size: contain; 
-        background-repeat: no-repeat; 
-    }
-    .panel-titulo {
-        font-size: 24px;
-        font-weight: bold;
-        margin-top: 20px;
-    }
-    
-    .usuarios-table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    
-    .usuarios-table th, .usuarios-table td {
-        border: 1px solid #ccc;
-        padding: 8px;
-        text-align: left;
-    }
-     
-    
+}
+nav ul {
+    float: right;
+    list-style: none;
+}
+
+header {
+    text-align: center;
+    padding: 8px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    background-position: 5%;
+}
+.logo {
+    position: absolute;
+    left: 20px;
+    top: 35px; 
+    width: 100px; 
+    height: 80px; 
+    background-image: url('../saved\ pictures/logo.png'); 
+    background-size: contain; 
+    background-repeat: no-repeat; 
+    margin-left: 5em;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    margin-top: 18vh; 
+}
+
+
+
+h1 {
+    font-size: 28px;
+    text-align: center;
+    color: rgb(185, 56, 56);
+    font-size: 35px;
+    margin-right: 19em;
+}
+
+h1.auto {
+    color: white; 
+    margin-right: 19em;
+    margin-top: 20px; 
+}
+
+
+label[for="email"] {
+    color: rgb(178, 166, 201);
+}
+
+footer {
+    background-color: rgb(72, 72, 72);
+    color:black;
+    text-align: left;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-icons {
+    text-align: right;
+}
+
+.social-icon {
+    margin: 0 5px;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    color:white;
+}
+
+.social-icon i {
+    font-size: 30px;
+    line-height: 60px;
+}
+
+
+.tabla-container {
+    background-color: #ffffff;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 40%;
+    margin-bottom: 70px; 
+    overflow: auto; 
+}
+
+
+.tablavalidar {
+    border-collapse: collapse;
+    width: 95%;
+    margin: auto;
+}
+
+.tablavalidar th,
+.tablavalidar td {
+    border: 1px solid #151414;
+    padding: 10px;
+    text-align: left;
+    max-width: 500px;
+    overflow: hidden;
+    width: 40%; 
+}
+
+.tablavalidar th {
+    background-color: #748cad;
+}
+
+.botonNo {
+    margin-right: 10px;
+    margin-top: 5px;
+    background-color: rgb(239, 131, 134);
+}
+
+.botonSi {
+    margin-right: 10px;
+    margin-top: 5px;
+    background-color: rgb(78, 227, 135);
+}
+h2 {
+    text-align: center;
+    margin-top: 45px;
+}
+.boton-hacerexamen {
+    display: flex;
+    gap: 10px;
+}
+
+.botonhacerexamen, .botonhistorialexamenes, .botoncerrarsesion {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: none;
+}
+
+.botonhacerexamen:hover, .botonhistorialexamenes:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+}
+
+.botoncerrarsesion {
+    background-color: #FF0000;
+}
+
+.botoncerrarsesion:hover {
+    background-color: white;
+    color: #FF0000;
+    border: 2px solid #FF0000;
+}
+
+.contenedor-preguntas {
+    width: 40%;
+    max-height: 80%;
+    max-width: 69%;
+    margin-top: -10%;
+    padding: 25px;
+    border: 1px solid #b17777;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    overflow-y: auto; 
+}
+
+
+
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea,
+input,
+select {
+    margin-bottom: 15px;
+    padding: 8px;
+    width: 100%;
+}
+
+select {
+    text-align-last: center; 
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.clicpregunta {
+    background-color: #4285f4;
+}
+
+.clicpregunta:hover {
+    background-color: #357ae8;
+}
+
+
+
+#botones-profesor {
+    margin-top: 190px;
+    margin-right: 220px;
+}
+
+#botones-profesor ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#botones-profesor li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#botones-profesor button {
+    padding: 10px 20px;
+    background-color: #58be61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#botones-profesor button:hover {
+    background-color: #5888be;
+}
+
+
+#botones-profesor .cerrar-sesion button {
+    background-color: #e74c3c; 
+    color: white;
+}
+
+#botones-profesor .cerrar-sesion button:hover {
+    background-color: white;
+    color: #FF0000;
+    border: 2px solid #FF0000;
 }

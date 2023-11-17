@@ -4,33 +4,34 @@ require_once "Db.php";
 class Db_pregunta {
     public static function FindByID($id) {
         $conexion = Db::AbreConexion();
-        $query = "SELECT * FROM pregunta WHERE id = :id";//la consulta se almacena en la variable query y utiliza un marcador id
+        $query = "SELECT * FROM pregunta WHERE id = :id";
         $statement = $conexion->prepare($query);
-        $statement->bindParam(':id', $id, PDO::PARAM_INT);//se prepara la consulta con el prepare y con el parametro bindPram vinculamos el valor del id
-        $statement->execute();//la consulta se ejecuta
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+    
+        $tupla = $statement->fetch(PDO::FETCH_OBJ); 
 
-        $preguntas = array();//almacenamos los resultados en un arreglo preguntas
-
-        while ($tuplas = $statement->fetch(PDO::FETCH_OBJ)) {//se obtiene la siguiente fila de resultados de la 
-            //consulta y se almacena en la variable $tuplas //La función fetch(PDO::FETCH_OBJ) recupera una fila de resultados 
-            //como un objeto anónimo en lugar de un array asociativo.
-            
-               $pregunta = new Pregunta(
-                $tuplas->id,
-                $tuplas->enunciado,
-                $tuplas->respuesta1,
-                $tuplas->respuesta2,
-                $tuplas->respuesta3,
-                $tuplas->correcta,
-                $tuplas->url,
-                $tuplas->tipo_url,
-                $tuplas->dificultad_id
+        $pregunta = null;
+    
+        if ($tupla) {
+            $pregunta = new Pregunta(
+                $tupla->id,
+                $tupla->enunciado,
+                $tupla->respuesta1,
+                $tupla->respuesta2,
+                $tupla->respuesta3,
+                $tupla->correcta,
+                $tupla->url,
+                $tupla->tipo_url,
+                $tupla->dificultad_id
             );
-            $preguntas[] = $pregunta;
+    
+            return $pregunta;
         }
-
-        return $preguntas;//el arreglo preguntas se devuelve como resultado
+    
+        return null; 
     }
+    
 
     public static function FindAll() {
         $conexion = Db::AbreConexion();
@@ -63,30 +64,84 @@ class Db_pregunta {
         $conexion = Db::AbreConexion();
         $query = "UPDATE pregunta SET enunciado = :enunciado, respuesta1 = :respuesta1, respuesta2 = :respuesta2, respuesta3 = :respuesta3, correcta = :correcta, url = :url, tipo_url = :tipo_url, dificultad_id = :dificultad_id WHERE id = :id";
         $statement = $conexion->prepare($query);
-        $statement->bindParam(':enunciado', $objetoActualizado->getEnunciado(), PDO::PARAM_STR);
-        $statement->bindParam(':respuesta1', $objetoActualizado->getRespuesta1(), PDO::PARAM_STR);
-        $statement->bindParam(':respuesta2', $objetoActualizado->getRespuesta2(), PDO::PARAM_STR);
-        $statement->bindParam(':respuesta3', $objetoActualizado->getRespuesta3(), PDO::PARAM_STR);
-        $statement->bindParam(':correcta', $objetoActualizado->getCorrecta(), PDO::PARAM_INT);
-        $statement->bindParam(':url', $objetoActualizado->getUrl(), PDO::PARAM_STR);
-        $statement->bindParam(':tipo_url', $objetoActualizado->getTipoUrl(), PDO::PARAM_STR);
-        $statement->bindParam(':dificultad_id', $objetoActualizado->getDificultadId(), PDO::PARAM_INT);
+    
+        // Obtener los valores antes de pasarlos a bindParam sino sale error
+        $enunciado = $objetoActualizado->getEnunciado();
+        $respuesta1 = $objetoActualizado->getRespuesta1();
+        $respuesta2 = $objetoActualizado->getRespuesta2();
+        $respuesta3 = $objetoActualizado->getRespuesta3();
+        $correcta = $objetoActualizado->getCorrecta();
+        $url = $objetoActualizado->getUrl();
+        $tipo_url = $objetoActualizado->getTipoUrl();
+        $dificultad_id = $objetoActualizado->getDificultadId();
+    
+        $statement->bindParam(':enunciado', $enunciado, PDO::PARAM_STR);
+        $statement->bindParam(':respuesta1', $respuesta1, PDO::PARAM_STR);
+        $statement->bindParam(':respuesta2', $respuesta2, PDO::PARAM_STR);
+        $statement->bindParam(':respuesta3', $respuesta3, PDO::PARAM_STR);
+        $statement->bindParam(':correcta', $correcta, PDO::PARAM_INT);
+        $statement->bindParam(':url', $url, PDO::PARAM_STR);
+        $statement->bindParam(':tipo_url', $tipo_url, PDO::PARAM_STR);
+        $statement->bindParam(':dificultad_id', $dificultad_id, PDO::PARAM_INT);
         $statement->bindParam(':id', $id, PDO::PARAM_INT);
         $statement->execute();
     }
+    
 
     public static function Insert($objeto) {
         $conexion = Db::AbreConexion();
         $query = "INSERT INTO pregunta (enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipo_url, dificultad_id) VALUES (:enunciado, :respuesta1, :respuesta2, :respuesta3, :correcta, :url, :tipo_url, :dificultad_id)";
         $statement = $conexion->prepare($query);
-        $statement->bindParam(':enunciado', $objeto->getEnunciado(), PDO::PARAM_STR);
-        $statement->bindParam(':respuesta1', $objeto->getRespuesta1(), PDO::PARAM_STR);
-        $statement->bindParam(':respuesta2', $objeto->getRespuesta2(), PDO::PARAM_STR);
-        $statement->bindParam(':respuesta3', $objeto->getRespuesta3(), PDO::PARAM_STR);
-        $statement->bindParam(':correcta', $objeto->getCorrecta(), PDO::PARAM_INT);
-        $statement->bindParam(':url', $objeto->getUrl(), PDO::PARAM_STR);
-        $statement->bindParam(':tipo_url', $objeto->getTipoUrl(), PDO::PARAM_STR);
-        $statement->bindParam(':dificultad_id', $objeto->getDificultadId(), PDO::PARAM_INT);
+    
+        $enunciado = $objeto->getEnunciado();
+        $respuesta1 = $objeto->getRespuesta1();
+        $respuesta2 = $objeto->getRespuesta2();
+        $respuesta3 = $objeto->getRespuesta3();
+        $correcta = $objeto->getCorrecta();
+        $url = $objeto->getUrl();
+        $tipo_url = $objeto->getTipoUrl();
+        $dificultad_id = $objeto->getDificultadId();
+    
+        $statement->bindParam(':enunciado', $enunciado, PDO::PARAM_STR);
+        $statement->bindParam(':respuesta1', $respuesta1, PDO::PARAM_STR);
+        $statement->bindParam(':respuesta2', $respuesta2, PDO::PARAM_STR);
+        $statement->bindParam(':respuesta3', $respuesta3, PDO::PARAM_STR);
+        $statement->bindParam(':correcta', $correcta, PDO::PARAM_INT);
+        $statement->bindParam(':url', $url, PDO::PARAM_STR);
+        $statement->bindParam(':tipo_url', $tipo_url, PDO::PARAM_STR);
+        $statement->bindParam(':dificultad_id', $dificultad_id, PDO::PARAM_INT);
+        
         $statement->execute();
+
+        $objeto->setId($conexion->lastInsertId());
+    }
+    
+    public static function GetById($id) {
+        $conexion = Db::AbreConexion();
+        $query = "SELECT * FROM pregunta WHERE id = :id";
+        $statement = $conexion->prepare($query);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+    
+        // Obtener la pregunta como un objeto
+        $pregunta = $statement->fetch(PDO::FETCH_OBJ);
+    
+        // Verificar si se encontró la pregunta
+        if ($pregunta) {
+            return new Pregunta(
+                $pregunta->id,
+                $pregunta->enunciado,
+                $pregunta->respuesta1,
+                $pregunta->respuesta2,
+                $pregunta->respuesta3,
+                $pregunta->correcta,
+                $pregunta->url,
+                $pregunta->tipo_url,
+                $pregunta->dificultad_id
+            
+            );
+        } else {
+            return null; 
+        }
     }
 }

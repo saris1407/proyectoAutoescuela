@@ -6,18 +6,18 @@
 
 .fondo {
     font-family: 'Open Sans', sans-serif;
-    background-image: url('../saved\ pictures/Coche.jpg'); /* Ruta de la imagen de fondo */
-    background-size: cover; /* Ajusta la imagen de fondo al tamaño del contenedor */
-    background-repeat: no-repeat; /* Evita la repetición de la imagen de fondo */
+    background-image: url('../saved\ pictures/Coche2.png'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
     position: relative;
     width: 100%;
-    height: 100vh; /* Ajusta la altura a la ventana visible */
+    height: 100vh;
 }
 
 .logo {
     position: absolute;
     top: 20px;
-    left: 20px;
+    left: -5em;
     width: 100px; 
     height: 100px; 
     background-image: url('../saved\ pictures/logo.png'); 
@@ -46,6 +46,6 @@ button {
     border: none;
     border-radius: 5px;
     position: absolute;
-    top: 90%;
-    right: 20px;
+    top:80%;
+    right: 40px;
 }

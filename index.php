@@ -3,9 +3,9 @@ class Principal
 {
     public static function main()
     {
-        require_once'./Helper/sesion.php';
-        require_once '';
+        require_once 'Vistas/layout.php';
     }
 }
+
 Principal::main();
 ?>

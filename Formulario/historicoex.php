@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="">
-    <title>Historico de Examen</title>
-</head>
-<body>
-    <header>
-        <h1>Historico de Examen</h1>
-        <div class="logo"></div>
-    </header>
+
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'].'/proyectoAutoescuela/cargadores/Autoload.php';
+Autoload::autoload();
+?>
+
+        <h2>Historico de Examen</h2>
+       
     <main>
         <div class="resultado-examen">
             <h2>Resultados del Examen</h2>
@@ -33,8 +28,4 @@
             <button type="submit" name="volver">Volver</button>
         </form>
     </main>
-    <footer>
-        &copy; 2023 AutoEscuela On The Road
-    </footer>
-</body>
-</html>
+    

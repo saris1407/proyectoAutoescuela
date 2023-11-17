@@ -1,50 +1,27 @@
+
 <?php
-
-
-require_once "login.php";
-
+require_once $_SERVER['DOCUMENT_ROOT'].'/proyectoAutoescuela/cargadores/Autoload.php';
+Autoload::autoload();
 
 class funcionesLogin {
 
-    public static function existeUsuario($usuario, $contraseña) {
-        // Obténemos los datos de la base de datos
-        $datos = Db_usuario::FindAll();
-
-        // Inicializar una variable para indicar si el usuario y la contraseña coinciden
-        $existe = false;
-
-        // array de datos
+    public static function existeUsuario($usuario, $contrasena) {
+        $datos = Db_usuario::FindAll() ;
+    
         foreach ($datos as $dato) {
-            if ($dato->getNombre() == $usuario && password_verify($contraseña, $dato->getContraseña())) {
-                
-                $existe = true;
-                break;
+        
+            if ($dato->getNombre() == $usuario) {
+        
+                if (password_verify($contrasena, $dato->getContraseña())) {
+                    
+                    return array('validado', 'rol' => $dato->getRol());
+                }
             }
         }
 
-
-        return $existe;
+        return array('validado' => 0);
     }
-
-    public static function logIn($usuario) {
-        session_start();
-        $_SESSION['user'] = $usuario;
-    }
-
-    public static function estaLogueado() {
-        session_start();
-        return isset($_SESSION['user']);
-    }
-
-    public static function logOut($ruta) {
-        session_start();
-        session_destroy();
-
-        if (!empty($ruta)) {
-            header("Location: $ruta");
-            exit;
-        }
-    }
-    
     
 }
+
+?>

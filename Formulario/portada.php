@@ -11,7 +11,7 @@
         <h1>AUTOESCUELA</h1>
         <h2>ON THE ROAD</h2>
     </div>
-    <form method="post" action="../proyectoAutoescuela/Formulario/login.php">
+    <form method="post" action="index.php?menu=login">
         <button type="submit" name="boton">Login</button>
     </form>
 </body>

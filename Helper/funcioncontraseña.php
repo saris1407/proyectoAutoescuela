@@ -1,6 +1,7 @@
 <?php
 
-require_once "recupercontraseña.php";
+require_once $_SERVER['DOCUMENT_ROOT'].'/proyectoAutoescuela/cargadores/Autoload.php';
+Autoload::autoload();
 
 class funcioncontraseña{
 

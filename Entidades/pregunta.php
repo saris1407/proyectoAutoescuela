@@ -60,6 +60,10 @@ class Pregunta {
     }
 
     // Setters
+    public function setId($id) {
+        $this->id = $id;
+    }
+    
     public function setEnunciado($enunciado) {
         $this->enunciado = $enunciado;
     }
@@ -94,6 +98,7 @@ class Pregunta {
     public function toString() {
         return "ID: " . $this->id . ", Enunciado: " . $this->enunciado . ", Respuesta 1: " . $this->respuesta1 . ", Respuesta 2: " . $this->respuesta2 . ", Respuesta 3: " . $this->respuesta3 . ", Correcta: " . $this->correcta . ", URL: " . $this->url . ", Tipo de URL: " . $this->tipo_url . ", ID de Dificultad: " . $this->dificultad_id;
     }
+    
 }
 
 ?>
